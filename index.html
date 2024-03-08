@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar se um número pertence à sequência de Fibonacci</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 8px;
+            margin-right: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p#resultado {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Verificar se um número pertence à sequência de Fibonacci</h1>
+        <p>Insira um número abaixo e clique no botão para verificar se ele pertence à sequência de Fibonacci:</p>
+        <input type="number" id="numero">
+        <button onclick="verificarNumero()">Verificar</button>
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        function fibonacciSequence(n) {
+            let fibonacci = [0, 1];
+            while (fibonacci[fibonacci.length - 1] < n) {
+                fibonacci.push(fibonacci[fibonacci.length - 1] + fibonacci[fibonacci.length - 2]);
+            }
+            return fibonacci;
+        }
+
+        function verificarNumero() {
+            const numero = parseInt(document.getElementById("numero").value);
+            const fibonacci = fibonacciSequence(numero);
+            const resultado = document.getElementById("resultado");
+            
+            if (fibonacci.includes(numero)) {
+                resultado.textContent = `O número ${numero} pertence à sequência de Fibonacci.`;
+            } else {
+                resultado.textContent = `O número ${numero} não pertence à sequência de Fibonacci.`;
+            }
+        }
+    </script>
+</body>
+</html>
